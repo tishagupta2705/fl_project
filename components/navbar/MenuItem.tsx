@@ -10,7 +10,7 @@ type Props = {
 function MenuItem({ onClick, label }: Props) {
   return (
     <div
-      className=" px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+      className="px-4 py-3 font-semibold text-[#1E3A8A] transition-all duration-200 cursor-pointer rounded-md hover:bg-[#00A6A6] hover:text-white hover:scale-105"
       onClick={onClick}
     >
       {label}
@@ -19,3 +19,5 @@ function MenuItem({ onClick, label }: Props) {
 }
 
 export default MenuItem;
+
+

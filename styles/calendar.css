@@ -1,0 +1,31 @@
+.calendar-container {
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.rdrCalendarWrapper {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.rdrDayToday .rdrDayNumber span {
+    color: #F59E0B !important;
+    /* Gold highlight for today */
+}
+
+.rdrDayHovered {
+    background: rgba(245, 158, 11, 0.2) !important;
+    /* Light gold hover */
+    border-radius: 50%;
+}
+
+.rdrDaySelected,
+.rdrDaySelected span {
+    background: #1E3A8A !important;
+    /* Deep Blue for selected */
+    color: white !important;
+    border-radius: 50%;
+}

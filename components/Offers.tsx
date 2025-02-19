@@ -10,51 +10,17 @@ import { GrWorkshop } from "react-icons/gr";
 import { MdOutlineBathtub, MdOutlineCoffeeMaker } from "react-icons/md";
 import { RiSafeLine } from "react-icons/ri";
 
-const offersRowOne = [
-  {
-    label: "Garden view",
-    icon: GiButterflyFlower,
-  },
-  {
-    label: "Hot water",
-    icon: BsFire,
-  },
-
-  {
-    label: "Wifi",
-    icon: AiOutlineWifi,
-  },
-  {
-    label: "Coffee",
-    icon: MdOutlineCoffeeMaker,
-  },
-  {
-    label: "Security cameras on property",
-    icon: BiCctv,
-  },
-];
-
-const offersRowTwo = [
-  {
-    label: "Bathtub",
-    icon: MdOutlineBathtub,
-  },
-  {
-    label: "Dedicated workspace",
-    icon: GrWorkshop,
-  },
-  {
-    label: "Safe",
-    icon: RiSafeLine,
-  },
-  {
-    label: "Free parking on premises",
-    icon: AiOutlineCar,
-  },
-  {
-    label: "Fire extinguisher",
-    icon: FaFireExtinguisher,
-  },
+const offers = [
+  { label: "Garden view", icon: GiButterflyFlower },
+  { label: "Hot water", icon: BsFire },
+  { label: "Wifi", icon: AiOutlineWifi },
+  { label: "Coffee", icon: MdOutlineCoffeeMaker },
+  { label: "Security cameras on property", icon: BiCctv },
+  { label: "Bathtub", icon: MdOutlineBathtub },
+  { label: "Dedicated workspace", icon: GrWorkshop },
+  { label: "Safe", icon: RiSafeLine },
+  { label: "Free parking on premises", icon: AiOutlineCar },
+  { label: "Fire extinguisher", icon: FaFireExtinguisher },
 ];
 
 type Props = {};
@@ -62,43 +28,21 @@ type Props = {};
 function Offers({}: Props) {
   return (
     <div>
-      <p className="text-xl font-semibold">What this place offers</p>
-      <div className="flex justify-start space-x-12 pt-6">
-        <div className="flex flex-col gap-2">
-          {offersRowOne.map((item, index) => (
-            <motion.div
-              initial={{
-                x: -200,
-                opacity: 0,
-              }}
-              transition={{ duration: 1 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              key={index}
-              className="flex justify-start items-center text-center gap-4 my-1 cursor-pointer"
-            >
-              <item.icon size={25} className="text-gray-700" />
-              <p className="text-neutral-500">{item.label}</p>
-            </motion.div>
-          ))}
-        </div>
-        {/* another row */}
-        <div className="flex flex-col gap-2">
-          {offersRowTwo.map((item, index) => (
-            <motion.div
-              initial={{
-                x: 200,
-                opacity: 0,
-              }}
-              transition={{ duration: 1 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              key={index}
-              className="flex justify-start items-center text-center gap-4 my-1 cursor-pointer"
-            >
-              <item.icon size={25} className="text-gray-700" />
-              <p className="text-neutral-500">{item.label}</p>
-            </motion.div>
-          ))}
-        </div>
+      <p className="text-2xl font-semibold text-[#FACC15]">{`What this place offers`}</p>
+      <div className="grid grid-cols-2 gap-6 pt-6">
+        {offers.map((item, index) => (
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: index * 0.05 }}
+            viewport={{ once: true }}
+            key={index}
+            className="flex items-center gap-4 px-4 py-3 border border-[#FACC15] rounded-lg bg-[#1E293B] text-white hover:text-[#FACC15] transition-all cursor-pointer"
+          >
+            <item.icon size={30} className="text-[#FACC15]" />
+            <p className="text-lg">{item.label}</p>
+          </motion.div>
+        ))}
       </div>
     </div>
   );

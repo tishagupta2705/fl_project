@@ -33,14 +33,20 @@ const ReservationsPage = async (props: Props) => {
     );
   }
 
+  // Check if a new reservation is added after payment
+  const updatedReservations = await getReservation({
+    authorId: currentUser.id,
+  });
+
   return (
     <ClientOnly>
       <ReservationsClient
-        reservations={reservations}
+        reservations={updatedReservations}  // Pass updated reservations to the client
         currentUser={currentUser}
       />
     </ClientOnly>
   );
 };
+
 
 export default ReservationsPage;

@@ -11,26 +11,28 @@ type Props = {
 };
 
 function HeartButton({ listingId, currentUser }: Props) {
-  const { hasFavorite, toggleFavorite } = useFavorite({
-    listingId,
-    currentUser,
-  });
+  const { hasFavorite, toggleFavorite } = useFavorite({ listingId, currentUser });
 
   return (
     <div
       onClick={toggleFavorite}
-      className=" relative hover:opacity-80 transition cursor-pointer"
+      className="relative cursor-pointer transition-all duration-300 hover:scale-110 active:scale-100 
+                 flex items-center justify-center bg-white/10 backdrop-blur-md shadow-xl rounded-full p-3"
     >
+      
       <AiOutlineHeart
-        size={28}
-        className="fill-white absolute -top-[2px] -right-[2px]"
+        size={32}
+        className="absolute text-white/80 transition-all"
       />
+      
       <AiFillHeart
-        size={24}
-        className={hasFavorite ? "fill-rose-500" : "fill-neutral-500/70"}
+        size={28}
+        className={`${hasFavorite ? "fill-[#F59E0B] drop-shadow-md" : "fill-[#374151]/70"} transition-all`}
       />
     </div>
   );
 }
 
 export default HeartButton;
+
+

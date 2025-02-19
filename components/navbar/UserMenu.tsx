@@ -28,13 +28,19 @@ function UserMenu({ currentUser }: Props) {
     setIsOpen((value) => !value);
   }, []);
 
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
   const onRent = useCallback(() => {
     if (!currentUser) {
+      closeMenu();
       return loginModel.onOpen();
     }
 
     rentModel.onOpen();
-  }, [currentUser, loginModel, rentModel]);
+    closeMenu();
+  }, [currentUser, loginModel, rentModel, closeMenu]);
 
   return (
     <div className="relative">
@@ -43,7 +49,7 @@ function UserMenu({ currentUser }: Props) {
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
           onClick={onRent}
         >
-          Airbnb your Home
+          Rent Your Space on BreezStay
         </div>
         <div
           onClick={toggleOpen}
@@ -71,29 +77,59 @@ function UserMenu({ currentUser }: Props) {
             {currentUser ? (
               <>
                 <MenuItem
-                  onClick={() => router.push("/trips")}
+                  onClick={() => {
+                    router.push("/trips");
+                    closeMenu();
+                  }}
                   label="My trips"
                 />
                 <MenuItem
-                  onClick={() => router.push("/favorites")}
+                  onClick={() => {
+                    router.push("/favorites");
+                    closeMenu();
+                  }}
                   label="My favorites"
                 />
                 <MenuItem
-                  onClick={() => router.push("/reservations")}
+                  onClick={() => {
+                    router.push("/reservations");
+                    closeMenu();
+                  }}
                   label="My reservations"
                 />
                 <MenuItem
-                  onClick={() => router.push("/properties")}
+                  onClick={() => {
+                    router.push("/properties");
+                    closeMenu();
+                  }}
                   label="My properties"
                 />
                 <MenuItem onClick={onRent} label="Airbnb your home" />
                 <hr />
-                <MenuItem onClick={() => signOut()} label="Logout" />
+                <MenuItem
+                  onClick={() => {
+                    signOut();
+                    closeMenu();
+                  }}
+                  label="Logout"
+                />
               </>
             ) : (
               <>
-                <MenuItem onClick={loginModel.onOpen} label="Login" />
-                <MenuItem onClick={registerModel.onOpen} label="Sign up" />
+                <MenuItem
+                  onClick={() => {
+                    loginModel.onOpen();
+                    closeMenu();
+                  }}
+                  label="Login"
+                />
+                <MenuItem
+                  onClick={() => {
+                    registerModel.onOpen();
+                    closeMenu();
+                  }}
+                  label="Sign up"
+                />
               </>
             )}
           </div>
@@ -104,3 +140,8 @@ function UserMenu({ currentUser }: Props) {
 }
 
 export default UserMenu;
+
+
+
+
+

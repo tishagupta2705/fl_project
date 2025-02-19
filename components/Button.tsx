@@ -11,6 +11,7 @@ type Props = {
   small?: boolean;
   icon?: IconType;
   isColor?: boolean;
+  className?: string;  // ✅ Added className prop
 };
 
 function Button({
@@ -21,23 +22,25 @@ function Button({
   small,
   icon: Icon,
   isColor,
+  className,  // Added className parameter
 }: Props) {
   return (
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full ${
-        outline ? "bg-white" : "bg-rose-500"
-      } ${outline ? "border-black" : "border-rose-500"} ${
-        outline ? "text-black" : "text-white"
-      } ${small ? "text-sm" : "text-md"} ${small ? "py-1" : "py-3"} ${
-        small ? "font-light" : "font-semibold"
-      } ${small ? "border-[1px]" : "border-2"}`}
+      className={`relative flex items-center justify-center gap-2 rounded-2xl transition-all duration-300 ease-in-out w-full 
+        ${outline ? "bg-transparent border-2 border-[#F59E0B] text-[#1E3A8A]" : "bg-[#1E3A8A] text-white"}  
+        ${small ? "text-sm py-2 px-4" : "text-md py-3 px-6"}  
+        ${small ? "font-light" : "font-medium"}  
+        hover:shadow-md hover:scale-[1.03]  
+        disabled:opacity-50 disabled:cursor-not-allowed  
+        ${className || ""} //  Applied className dynamically
+      `}
     >
       {Icon && (
         <Icon
           size={24}
-          className={`absolute left-4 top-3 ${isColor && "text-blue-600"}`}
+          className={`${isColor ? "text-[#00A6A6]" : "text-white"}`}
         />
       )}
       {label}
@@ -46,3 +49,6 @@ function Button({
 }
 
 export default Button;
+
+
+

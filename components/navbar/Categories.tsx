@@ -23,77 +23,77 @@ export const categories = [
   {
     label: "Beach",
     icon: TbBeach,
-    description: "This property is close to the beach!",
+    description: "This property is just a short walk from the beach, perfect for beach lovers!",
   },
   {
     label: "Windmills",
     icon: GiWindmill,
-    description: "This property is has windmills!",
+    description: "Experience the charm of this property with its scenic windmills!",
   },
   {
     label: "Modern",
     icon: MdOutlineVilla,
-    description: "This property is modern!",
+    description: "A contemporary and stylish property with sleek modern amenities!",
   },
   {
     label: "Countryside",
     icon: TbMountain,
-    description: "This property is in the countryside!",
+    description: "Located in the peaceful countryside, surrounded by nature's beauty!",
   },
   {
     label: "Pools",
     icon: TbPool,
-    description: "This is property has a beautiful pool!",
+    description: "Relax and unwind in the property’s stunning pool area!",
   },
   {
     label: "Islands",
     icon: GiIsland,
-    description: "This property is on an island!",
+    description: "Escape to your own private island with this exclusive property!",
   },
   {
     label: "Lake",
     icon: GiBoatFishing,
-    description: "This property is near a lake!",
+    description: "Enjoy the tranquil surroundings of a lake just moments away from this property!",
   },
   {
     label: "Skiing",
     icon: FaSkiing,
-    description: "This property has skiing activies!",
+    description: "This property offers thrilling skiing experiences for adventure enthusiasts!",
   },
   {
     label: "Castles",
     icon: GiCastle,
-    description: "This property is an ancient castle!",
+    description: "Step into history with this magnificent ancient castle property!",
   },
   {
     label: "Caves",
     icon: GiCaveEntrance,
-    description: "This property is in a spooky cave!",
+    description: "Explore the mysterious ambiance of a property located in a natural cave!",
   },
   {
     label: "Camping",
     icon: GiForestCamp,
-    description: "This property offers camping activities!",
+    description: "Enjoy the great outdoors with camping activities available at this property!",
   },
   {
     label: "Arctic",
     icon: BsSnow,
-    description: "This property is in arctic environment!",
+    description: "Experience the chill of the Arctic with this property in a snowy environment!",
   },
   {
     label: "Desert",
     icon: GiCactus,
-    description: "This property is in the desert!",
+    description: "Embrace the vast, beautiful desert landscape surrounding this property!",
   },
   {
     label: "Barns",
     icon: GiBarn,
-    description: "This property is in a barn!",
+    description: "A rustic barn setting for those who enjoy farm-style living and country vibes!",
   },
   {
-    label: "Lux",
+    label: "Luxury",
     icon: IoDiamond,
-    description: "This property is brand new and luxurious!",
+    description: "Indulge in top-tier luxury with this newly built, high-end property!",
   },
 ];
 
@@ -112,13 +112,16 @@ function Categories({}: Props) {
 
   return (
     <Container>
-      <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
-        {categories.map((items, index) => (
+      <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto space-x-4 px-4">
+        {categories.map((item, index) => (
           <CategoryBox
             key={index}
-            icon={items.icon}
-            label={items.label}
-            selected={category === items.label}
+            icon={item.icon}
+            label={item.label}
+            selected={category === item.label}
+            className={`transition transform hover:scale-105 ${
+              category === item.label ? "text-[#F59E0B] border-b-2 border-[#F59E0B]" : "text-gray-500"
+            }`}
           />
         ))}
       </div>
@@ -127,3 +130,8 @@ function Categories({}: Props) {
 }
 
 export default Categories;
+
+
+
+
+
